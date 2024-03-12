@@ -76,6 +76,15 @@ namespace ElibraryManagement
                 }
 
                 SqlCommand cmd = new SqlCommand("INSERT INTO meeber_master_tbl(full_name,dob,contact_no,email,state,city,pincode,full_address,meember_id,password,account_status) values(@full_name,@dob,@contact_no,@email,@state,@city,@pincode,@full_address,@meember_id,@password,@account_status)", con);
+                
+                if (PasswrdBox.Text.Trim().Length > 7 && PasswrdBox.Text.Trim().Length < 17)
+                {
+                    cmd.Parameters.AddWithValue("@password", PasswrdBox.Text.Trim());
+                }
+                else
+                {
+                    Response.Write("<script>alert('Your Password has to be no shorter than 8 symbols and no longer than 16 symbols.');</script>");
+                }
 
                 cmd.Parameters.AddWithValue("@full_name", FullNameBox.Text.Trim());
                 cmd.Parameters.AddWithValue("@dob", DobBox.Text.Trim());
@@ -86,8 +95,8 @@ namespace ElibraryManagement
                 cmd.Parameters.AddWithValue("@pincode", PinCodeBox.Text.Trim());
                 cmd.Parameters.AddWithValue("@full_address", FullAdrsBox.Text.Trim());
                 cmd.Parameters.AddWithValue("@meember_id", MeemberIdBox.Text.Trim());
-                cmd.Parameters.AddWithValue("@password", PasswrdBox.Text.Trim());
                 cmd.Parameters.AddWithValue("@account_status", "pending");
+
 
                 cmd.ExecuteNonQuery();
                 con.Close();

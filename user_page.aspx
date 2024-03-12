@@ -1,5 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="user_page.aspx.cs" Inherits="ElibraryManagement.user_page" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+     <script type="text/javascript">
+        $(document).ready(function () {
+            $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();
+        });
+     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container-fluid">
@@ -20,7 +25,7 @@
                                 <center>
                                     <h4>Your Profile</h4>
                                     <span>Account Status - </span>
-                                    <asp:Label CssClass="badge badge-pill badge-info" ID="Label1" runat="server" Text="Pending"></asp:Label>
+                                    <asp:Label class="badge badge-pill badge-info" ID="AccStatusLabel" runat="server"></asp:Label>
                                 </center>
                             </div>
                         </div>
@@ -35,16 +40,16 @@
                             <div class="col-md-6 mx-auto">
                                 <label>Full Name</label>
                                     <div class="form-group">
-                                        <asp:TextBox ID="TextBox1" runat="server" 
-                                                     CssClass="form-control" placeholder="Full Name"></asp:TextBox>
+                                        <asp:TextBox ID="FullNameBox" runat="server" 
+                                                     Class="form-control" placeholder="Full Name"></asp:TextBox>
                                     </div>
                             </div>
                         
                             <div class="col-md-6 mx-auto">
                                 <label>Date of Birth</label>
                                     <div class="form-group">
-                                        <asp:TextBox ID="TextBox2" runat="server"
-                                                     CssClass="form-control" placeholder="dd-mm-yyyy"
+                                        <asp:TextBox ID="DobBox" runat="server"
+                                                     class="form-control" placeholder="dd-mm-yyyy"
                                                      TextMode="Date"></asp:TextBox>
                                     </div>
                             </div>
@@ -54,8 +59,8 @@
                             <div class="col-md-6 mx-auto">
                                 <label>Contact Number</label>
                                     <div class="form-group">
-                                        <asp:TextBox ID="TextBox3" runat="server" 
-                                                 CssClass="form-control" placeholder="Contact Number"
+                                        <asp:TextBox ID="ContactNoBox" runat="server" 
+                                                 class="form-control" placeholder="Contact Number"
                                                  TextMode="Phone"></asp:TextBox>
                                     </div>
                             </div>
@@ -63,8 +68,8 @@
                             <div class="col-md-6 mx-auto">
                                 <label>Email ID</label>
                                     <div class="form-group">
-                                        <asp:TextBox ID="TextBox4" runat="server"
-                                                 CssClass="form-control" placeholder="Email ID"
+                                        <asp:TextBox ID="EmailBox" runat="server"
+                                                 class="form-control" placeholder="Email ID"
                                                  TextMode="Email"></asp:TextBox>
                                     </div>
                             </div>
@@ -74,8 +79,8 @@
                             <div class="col-md-4 mx-auto">
                                 <label>State</label>
                                     <div class="form-group">
-                                        <asp:DropDownList ID="DropDownList1" runat="server"
-                                                          CssClass="form-control">
+                                        <asp:DropDownList ID="StateDropDownList" runat="server"
+                                                          class="form-control">
                                             <asp:ListItem Text="Select" Value="select" />
                                             <asp:ListItem Text="Illinois" Value="Illinois" />
                                             <asp:ListItem Text="D.C. Washington" Value="D.C. Washington" />
@@ -114,16 +119,16 @@
                             <div class="col-md-4 mx-auto">
                                 <label>City</label>
                                     <div class="form-group">
-                                        <asp:TextBox ID="TextBox6" runat="server"
-                                                 CssClass="form-control" placeholder="City"></asp:TextBox>
+                                        <asp:TextBox ID="CityBox" runat="server"
+                                                 class="form-control" placeholder="City"></asp:TextBox>
                                     </div>
                             </div>
                         
                             <div class="col-md-4 mx-auto">
                                 <label>Pin Code</label>
                                     <div class="form-group">
-                                        <asp:TextBox ID="TextBox7" runat="server"
-                                                 CssClass="form-control" placeholder="Pin Code"
+                                        <asp:TextBox ID="PinCodeBox" runat="server"
+                                                 class="form-control" placeholder="Pin Code"
                                                  TextMode="Number"></asp:TextBox>
                                     </div>
                             </div>
@@ -133,8 +138,8 @@
                             <div class="col">
                                 <label>Full Address</label>
                                     <div class="form-group">
-                                        <asp:TextBox ID="TextBox5" runat="server"
-                                                     CssClass="form-control" placeholder="Full Address"
+                                        <asp:TextBox ID="FullAdrsBox" runat="server"
+                                                     class="form-control" placeholder="Full Address"
                                                      TextMode="MultiLine" Rows="2"></asp:TextBox>
                                     </div>
                             </div>
@@ -154,9 +159,9 @@
                             <div class="col-md-4 mx-auto">
                                 <label>User ID</label>
                                     <div class="form-group">
-                                        <asp:TextBox ID="TextBox8" runat="server" 
+                                        <asp:TextBox ID="IdBox" runat="server" 
                                                      placeholder="User ID"
-                                                     ReadOnly="true" CssClass="form-control"></asp:TextBox>
+                                                     ReadOnly="true" class="form-control"></asp:TextBox>
                                                      
                                     </div>
                             </div>
@@ -164,17 +169,17 @@
                             <div class="col-md-4 mx-auto">
                                 <label>Old Password</label>
                                     <div class="form-group">
-                                        <asp:TextBox ID="TextBox9" runat="server"
-                                                     CssClass="form-control" placeholder="Old Password"
-                                                     ReadOnly="true" TextMode="Password"></asp:TextBox>
+                                        <asp:TextBox ID="PasswBox" runat="server"
+                                                     class="form-control" placeholder="Old Password"
+                                                     ReadOnly="true"></asp:TextBox>
                                     </div>
                             </div>
     
                             <div class="col-md-4 mx-auto">
                                 <label>New Password</label>
                                     <div class="form-group">
-                                        <asp:TextBox ID="TextBox10" runat="server"
-                                                     CssClass="form-control" placeholder="New Password"
+                                        <asp:TextBox ID="NewPasswBox" runat="server"
+                                                     class="form-control" placeholder="New Password"
                                                      TextMode="Password"></asp:TextBox>
                                     </div>
                             </div>
@@ -184,8 +189,8 @@
                             <div class="col-8 mx-auto">
                                 <div class="form-group">
                                     <center>
-                                        <asp:Button class="btn btn-primary btn-block btn-lg" ID="Button1" 
-                                                    runat="server" Text="Update" />
+                                        <asp:Button class="btn btn-primary btn-block btn-lg" ID="UpdateButton" 
+                                                    runat="server" Text="Update" OnClick="UpdateButton_Click" />
                                     </center>
                                 </div>
                             </div>
@@ -211,7 +216,7 @@
                           <div class="col">
                               <center>
                                   <h4>Your Issued Books</h4>
-                                  <asp:Label CssClass="badge badge-pill badge-info" ID="Label2" 
+                                  <asp:Label Class="badge badge-pill badge-info" ID="UserIssuedLabel" 
                                              runat="server" Text="Info about book due date"></asp:Label>
                               </center>
                           </div>
@@ -224,9 +229,16 @@
                       </div>
 
                       <div class="row">
+                          <asp:SqlDataSource ID="IssuedBookSqlDataSource" runat="server"
+                              ConnectionString="<%$ ConnectionStrings:ebobalibraryDBConnectionString %>"
+                              ProviderName="<%$ ConnectionStrings:ebobalibraryDBConnectionString.ProviderName %>"
+                              SelectCommand="SELECT * FROM [book_issue_tbl]"></asp:SqlDataSource>
                           <div class="col">
-                              <asp:GridView ID="GridView1" runat="server"
-                                            class="table table-striped table-bordered"></asp:GridView>
+                              <asp:GridView ID="UserIssuedGridView" runat="server"
+                                  class="table table-striped table-bordered"
+                                  OnRowDataBound="IssuedUserGridView_RowDataBound" 
+                                  DataSourceID="IssuedBookSqlDataSource">
+                              </asp:GridView>
                           </div>
                       </div>
                  </div>

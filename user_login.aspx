@@ -43,12 +43,12 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <asp:Button class="btn btn-success btn-block btn-lg" ID="Button1"
-                                        runat="server" Text="Login" OnClick="Button1_Click" />
+                                    <asp:Button class="btn btn-success btn-block btn-lg" ID="LoginButton"
+                                        runat="server" Text="Login" OnClick="LoginButton_Click" />
                                 </div>
 
                                 <div class="form-group">
-                                    <a href="sign_up.aspx"><input class="btn btn-info btn-block btn-lg" id="Button2" 
+                                    <a href="sign_up.aspx"><input class="btn btn-info btn-block btn-lg" id="SignUpButton" 
                                            type="button" value="Sign Up" /></a>
                                 </div>
                             </div>

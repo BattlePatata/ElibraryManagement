@@ -21,9 +21,12 @@
     <script src="bootstrap/js/popper.min.js"></script>
     <%-- bootstrap js --%>            
     <script src="bootstrap/js/bootstrap.min.js"></script>
+    <%-- jquery js --%>            
+    <script src="datatables/js/jquery.dataTables.min.js"></script>
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-</head>
+</head> 
 <body>
     <form id="form1" runat="server">
         <div>

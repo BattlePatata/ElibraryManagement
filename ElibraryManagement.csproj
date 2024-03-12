@@ -70,6 +70,9 @@
     <Content Include="admin_author_management.aspx" />
     <Content Include="admin_login.aspx" />
     <Content Include="book_inventory.aspx" />
+    <Content Include="book_inventory_img\b1.jpg" />
+    <Content Include="book_inventory_img\b2.jpg" />
+    <Content Include="book_inventory_img\books1.png" />
     <Content Include="book_issuing.aspx" />
     <Content Include="bootstrap\css\bootstrap.min.css" />
     <Content Include="bootstrap\js\bootstrap.min.js" />

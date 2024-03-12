@@ -19,7 +19,7 @@ namespace ElibraryManagement
 
         }
         // User login
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void LoginButton_Click(object sender, EventArgs e)
         {
             try
             {
